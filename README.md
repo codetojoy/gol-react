@@ -16,7 +16,9 @@ see [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 Todo:
 ---------
 
-* TBD
+* build empty world without any UI
+* seed world without any UI
+* play round withotu any UI
 
 Notes:
 ---------
