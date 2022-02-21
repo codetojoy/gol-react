@@ -1,5 +1,5 @@
 import CellState from "./CellState";
-import Neighbour from "./Neighbour";
+import { Neighbour } from "./Neighbour";
 
 class Cell {
   id: number;

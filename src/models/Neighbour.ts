@@ -1,4 +1,3 @@
-
 /*
 |   |   |   |   |   |
 |   | 1 | 2 | 3 |   |
@@ -7,15 +6,24 @@
 |   |   |   |   |   |
 */
 
-enum Neighbour {
-  n1 = 1,
-  n2 = 2,
-  n3 = 3,
-  n4 = 4,
-  n5 = 5,
-  n6 = 6,
-  n7 = 7,
-  n8 = 8,
+export enum Neighbour {
+  upper_left = 1,
+  upper = 2,
+  upper_right = 3,
+  left = 4,
+  right = 5,
+  lower_left = 6,
+  lower = 7,
+  lower_right = 8,
 }
 
-export default Neighbour;
+export const allNeighbours: Neighbour[] = [
+  Neighbour.upper_left,
+  Neighbour.upper,
+  Neighbour.upper_right,
+  Neighbour.left,
+  Neighbour.right,
+  Neighbour.lower_left,
+  Neighbour.lower,
+  Neighbour.lower_right,
+];
