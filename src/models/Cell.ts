@@ -11,6 +11,11 @@ class Cell {
     this.state = state;
     this.neighbours = new Map<Neighbour, Cell>();
   }
+
+  // TODO: use private properties with get/set
+  setNeighbours(neighbours: Map<Neighbour, Cell>): void {
+    this.neighbours = neighbours;
+  }
 }
 
 export default Cell;

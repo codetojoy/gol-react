@@ -1,7 +1,7 @@
 import Cell from "../models/Cell";
 import CellState from "../models/CellState";
 import Grid from "../models/Grid";
-import { Neighbour } from "../models/Neighbour";
+// import { Neighbour } from "../models/Neighbour";
 import IdService from "./IdService";
 
 class GridService {
@@ -27,7 +27,13 @@ class GridService {
   }
 
   populateNeighbours(numCells: number, grid: Grid): void {
-    for (let i = 0; i < numCells; i++) {}
+    const idService = new IdService(this.numRows, this.numCols);
+    const ids = grid.getIds();
+    ids.forEach((id) => {
+      const cell = grid.getCell(id);
+      // const neighbours = idService.getNeighbouringCells(id);
+      // cell.setNeighbours(neighbours);
+    });
   }
 
   buildCell(id: number): Cell {

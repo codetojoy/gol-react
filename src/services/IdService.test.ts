@@ -30,6 +30,119 @@ describe("IdService", () => {
 
   // ---------------------------
   // TODO: data-driven tests
+  test("getNeighbouringCellIds for id 0", () => {
+    const id = 0;
+
+    // test
+    const result: number[] = idService.getNeighbouringCellIds(id);
+
+    expect(result.length).toEqual(3);
+    expect(result.includes(1)).toBeTruthy();
+    expect(result.includes(6)).toBeTruthy();
+    expect(result.includes(7)).toBeTruthy();
+  });
+  test("getNeighbouringCellIds for id 5", () => {
+    const id = 5;
+
+    // test
+    const result: number[] = idService.getNeighbouringCellIds(id);
+
+    expect(result.length).toEqual(3);
+    expect(result.includes(4)).toBeTruthy();
+    expect(result.includes(10)).toBeTruthy();
+    expect(result.includes(11)).toBeTruthy();
+  });
+  test("getNeighbouringCellIds for id 15", () => {
+    const id = 15;
+
+    // test
+    const result: number[] = idService.getNeighbouringCellIds(id);
+
+    expect(result.length).toEqual(8);
+    expect(result.includes(8)).toBeTruthy();
+    expect(result.includes(9)).toBeTruthy();
+    expect(result.includes(10)).toBeTruthy();
+    expect(result.includes(14)).toBeTruthy();
+    expect(result.includes(16)).toBeTruthy();
+    expect(result.includes(20)).toBeTruthy();
+    expect(result.includes(21)).toBeTruthy();
+    expect(result.includes(22)).toBeTruthy();
+  });
+  test("getNeighbouringCellIds for id 24", () => {
+    const id = 24;
+
+    // test
+    const result: number[] = idService.getNeighbouringCellIds(id);
+
+    expect(result.length).toEqual(3);
+    expect(result.includes(18)).toBeTruthy();
+    expect(result.includes(19)).toBeTruthy();
+    expect(result.includes(25)).toBeTruthy();
+  });
+  test("getNeighbouringCellIds for id 28", () => {
+    const id = 28;
+
+    // test
+    const result: number[] = idService.getNeighbouringCellIds(id);
+
+    expect(result.length).toEqual(5);
+    expect(result.includes(21)).toBeTruthy();
+    expect(result.includes(22)).toBeTruthy();
+    expect(result.includes(23)).toBeTruthy();
+    expect(result.includes(27)).toBeTruthy();
+    expect(result.includes(29)).toBeTruthy();
+  });
+
+  // ---------------------------
+  // TODO: data-driven tests
+  test("get id for 0", () => {
+    const id = 0;
+    const coord: Coord = idService.getCoordinate(id);
+
+    // test
+    const result: number = idService.getId(coord.rowIndex, coord.colIndex);
+
+    expect(result).toEqual(id);
+  });
+  test("get id for 5", () => {
+    const id = 5;
+    const coord: Coord = idService.getCoordinate(id);
+
+    // test
+    const result: number = idService.getId(coord.rowIndex, coord.colIndex);
+
+    expect(result).toEqual(id);
+  });
+  test("get id for 15", () => {
+    const id = 15;
+    const coord: Coord = idService.getCoordinate(id);
+
+    // test
+    const result: number = idService.getId(coord.rowIndex, coord.colIndex);
+
+    expect(result).toEqual(id);
+  });
+  test("get id for 25", () => {
+    const id = 25;
+    const coord: Coord = idService.getCoordinate(id);
+
+    // test
+    const result: number = idService.getId(coord.rowIndex, coord.colIndex);
+
+    expect(result).toEqual(id);
+  });
+  test("get id for 29", () => {
+    const id = 29;
+    const coord: Coord = idService.getCoordinate(id);
+
+    // test
+    const result: number = idService.getId(coord.rowIndex, coord.colIndex);
+
+    expect(result).toEqual(id);
+  });
+
+  // ---------------------------
+  // TODO: data-driven tests
   test("get neighbours id: 0", () => {
     const id = 0;
 

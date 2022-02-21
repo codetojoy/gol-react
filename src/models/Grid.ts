@@ -7,6 +7,10 @@ class Grid {
     this.cells.push(cell);
   }
 
+  getCell(id: number) {
+    return this.cells[id];
+  }
+
   getIds(): number[] {
     let ids: number[] = this.cells.map((c) => c.id);
     return ids;
