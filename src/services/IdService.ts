@@ -1,4 +1,5 @@
-// import Cell from "../models/Cell";
+import Cell from "../models/Cell";
+import Grid from "../models/Grid";
 import { Neighbour, allNeighbours } from "../models/Neighbour";
 import Coord from "../models/Coord";
 
@@ -26,14 +27,14 @@ class IdService {
   getId(rowIndex: number, colIndex: number): number {
     return rowIndex * this.numCols + colIndex;
   }
-  getNeighbouringCellIds(id: number): number[] {
-    const ids: number[] = [];
+  getNeighbouringCells(id: number): Map<Neighbour, number> {
+    const map = new Map<Neighbour, number>();
     const neighbours = this.getNeighbours(id);
     neighbours.forEach((n) => {
       const neighbourId = this.getNeighbouringCellId(id, n);
-      ids.push(neighbourId);
+      map.set(n, neighbourId);
     });
-    return ids;
+    return map;
   }
   getNeighbouringCellId(id: number, neighbour: Neighbour): number {
     this.validateId(id);

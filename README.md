@@ -16,6 +16,8 @@ see [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 Todo:
 ---------
 
+* X: IdService should return a map of <Neighbour, Cell> and not number[]
+* why does a Cell contain neighbours?
 * build empty world without any UI
 * seed world without any UI
 * play round withotu any UI

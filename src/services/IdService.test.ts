@@ -1,3 +1,4 @@
+import Cell from "../models/Cell";
 import Coord from "../models/Coord";
 import { Neighbour } from "../models/Neighbour";
 import IdService from "./IdService";
@@ -30,67 +31,98 @@ describe("IdService", () => {
 
   // ---------------------------
   // TODO: data-driven tests
-  test("getNeighbouringCellIds for id 0", () => {
+  test("getNeighbouringCells for id 0", () => {
     const id = 0;
 
     // test
-    const result: number[] = idService.getNeighbouringCellIds(id);
+    const result: Map<Neighbour, number> = idService.getNeighbouringCells(id);
 
-    expect(result.length).toEqual(3);
-    expect(result.includes(1)).toBeTruthy();
-    expect(result.includes(6)).toBeTruthy();
-    expect(result.includes(7)).toBeTruthy();
+    let keys = Array.from(result.keys());
+    expect(keys.length).toEqual(3);
+    expect(keys.includes(Neighbour.right)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower_right)).toBeTruthy();
+    let ids = Array.from(result.values());
+    expect(ids.includes(1)).toBeTruthy();
+    expect(ids.includes(6)).toBeTruthy();
+    expect(ids.includes(7)).toBeTruthy();
   });
-  test("getNeighbouringCellIds for id 5", () => {
+  test("getNeighbouringCells for id 5", () => {
     const id = 5;
 
     // test
-    const result: number[] = idService.getNeighbouringCellIds(id);
+    const result: Map<Neighbour, number> = idService.getNeighbouringCells(id);
 
-    expect(result.length).toEqual(3);
-    expect(result.includes(4)).toBeTruthy();
-    expect(result.includes(10)).toBeTruthy();
-    expect(result.includes(11)).toBeTruthy();
+    let keys = Array.from(result.keys());
+    expect(keys.length).toEqual(3);
+    expect(keys.includes(Neighbour.left)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower_left)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower)).toBeTruthy();
+    let ids = Array.from(result.values());
+    expect(ids.includes(4)).toBeTruthy();
+    expect(ids.includes(10)).toBeTruthy();
+    expect(ids.includes(11)).toBeTruthy();
   });
-  test("getNeighbouringCellIds for id 15", () => {
+  test("getNeighbouringCells for id 15", () => {
     const id = 15;
 
     // test
-    const result: number[] = idService.getNeighbouringCellIds(id);
+    const result: Map<Neighbour, number> = idService.getNeighbouringCells(id);
 
-    expect(result.length).toEqual(8);
-    expect(result.includes(8)).toBeTruthy();
-    expect(result.includes(9)).toBeTruthy();
-    expect(result.includes(10)).toBeTruthy();
-    expect(result.includes(14)).toBeTruthy();
-    expect(result.includes(16)).toBeTruthy();
-    expect(result.includes(20)).toBeTruthy();
-    expect(result.includes(21)).toBeTruthy();
-    expect(result.includes(22)).toBeTruthy();
+    let keys = Array.from(result.keys());
+    expect(keys.length).toEqual(8);
+    expect(keys.includes(Neighbour.upper_left)).toBeTruthy();
+    expect(keys.includes(Neighbour.upper)).toBeTruthy();
+    expect(keys.includes(Neighbour.upper_right)).toBeTruthy();
+    expect(keys.includes(Neighbour.left)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower_left)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower_right)).toBeTruthy();
+    let ids = Array.from(result.values());
+    expect(ids.includes(8)).toBeTruthy();
+    expect(ids.includes(9)).toBeTruthy();
+    expect(ids.includes(10)).toBeTruthy();
+    expect(ids.includes(14)).toBeTruthy();
+    expect(ids.includes(16)).toBeTruthy();
+    expect(ids.includes(20)).toBeTruthy();
+    expect(ids.includes(21)).toBeTruthy();
+    expect(ids.includes(22)).toBeTruthy();
   });
-  test("getNeighbouringCellIds for id 24", () => {
+  test("getNeighbouringCells for id 24", () => {
     const id = 24;
 
     // test
-    const result: number[] = idService.getNeighbouringCellIds(id);
+    const result: Map<Neighbour, number> = idService.getNeighbouringCells(id);
 
-    expect(result.length).toEqual(3);
-    expect(result.includes(18)).toBeTruthy();
-    expect(result.includes(19)).toBeTruthy();
-    expect(result.includes(25)).toBeTruthy();
+    let keys = Array.from(result.keys());
+    expect(keys.length).toEqual(3);
+    expect(keys.includes(Neighbour.upper)).toBeTruthy();
+    expect(keys.includes(Neighbour.upper_right)).toBeTruthy();
+    expect(keys.includes(Neighbour.right)).toBeTruthy();
+    let ids = Array.from(result.values());
+    expect(ids.includes(18)).toBeTruthy();
+    expect(ids.includes(19)).toBeTruthy();
+    expect(ids.includes(25)).toBeTruthy();
   });
-  test("getNeighbouringCellIds for id 28", () => {
+  test("getNeighbouringCells for id 28", () => {
     const id = 28;
 
     // test
-    const result: number[] = idService.getNeighbouringCellIds(id);
+    const result: Map<Neighbour, number> = idService.getNeighbouringCells(id);
 
-    expect(result.length).toEqual(5);
-    expect(result.includes(21)).toBeTruthy();
-    expect(result.includes(22)).toBeTruthy();
-    expect(result.includes(23)).toBeTruthy();
-    expect(result.includes(27)).toBeTruthy();
-    expect(result.includes(29)).toBeTruthy();
+    let keys = Array.from(result.keys());
+    expect(keys.length).toEqual(5);
+    expect(keys.includes(Neighbour.upper_left)).toBeTruthy();
+    expect(keys.includes(Neighbour.upper)).toBeTruthy();
+    expect(keys.includes(Neighbour.upper_right)).toBeTruthy();
+    expect(keys.includes(Neighbour.left)).toBeTruthy();
+    expect(keys.includes(Neighbour.right)).toBeTruthy();
+    let ids = Array.from(result.values());
+    expect(ids.includes(21)).toBeTruthy();
+    expect(ids.includes(22)).toBeTruthy();
+    expect(ids.includes(23)).toBeTruthy();
+    expect(ids.includes(27)).toBeTruthy();
+    expect(ids.includes(29)).toBeTruthy();
   });
 
   // ---------------------------

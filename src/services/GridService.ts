@@ -1,6 +1,7 @@
 import Cell from "../models/Cell";
 import CellState from "../models/CellState";
 import Grid from "../models/Grid";
+import { Neighbour } from "../models/Neighbour";
 // import { Neighbour } from "../models/Neighbour";
 import IdService from "./IdService";
 
@@ -27,12 +28,17 @@ class GridService {
   }
 
   populateNeighbours(numCells: number, grid: Grid): void {
-    const idService = new IdService(this.numRows, this.numCols);
+    const idService: IdService = new IdService(this.numRows, this.numCols);
     const ids = grid.getIds();
     ids.forEach((id) => {
-      const cell = grid.getCell(id);
-      // const neighbours = idService.getNeighbouringCells(id);
-      // cell.setNeighbours(neighbours);
+      const idMap: Map<Neighbour, number> = idService.getNeighbouringCells(id);
+      const neighbours: Map<Neighbour, Cell> = new Map<Neighbour, Cell>();
+      idMap.forEach((n, neighbourId) => {
+        const neighbourCell: Cell = grid.getCell(neighbourId);
+        neighbours.set(n, neighbourCell);
+      });
+      const cell: Cell = grid.getCell(id);
+      cell.setNeighbours(neighbours);
     });
   }
 
