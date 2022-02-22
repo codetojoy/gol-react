@@ -71,12 +71,8 @@ describe("GridService", () => {
 
   // --------------------------------
   // TODO: data-driven?
-  test("should tick for an iteration, case 1", () => {
+  test("should tick for an iteration, boundary condition: all dead", () => {
     const grid = gridService.buildGrid();
-    grid.setAlive(0);
-    grid.setAlive(3);
-    grid.setAlive(8);
-    grid.setAlive(11);
 
     // test
     const newGrid = gridService.tick(grid);
@@ -85,6 +81,43 @@ describe("GridService", () => {
     ids.forEach((id) => {
       const isAlive: boolean = newGrid.getCell(id).isAlive();
       expect(isAlive).toBeFalsy();
+    });
+  });
+  test("should tick for an iteration, boundary condition: all alive", () => {
+    const grid = gridService.buildGrid();
+    let ids = grid.getIds();
+    ids.forEach((id) => {
+      grid.setAlive(id);
+    });
+
+    // test
+    const newGrid = gridService.tick(grid);
+
+    ids = newGrid.getIds();
+    const expectedSurvivors = [0, 3, 8, 11];
+    ids.forEach((id) => {
+      const isAlive: boolean = newGrid.getCell(id).isAlive();
+      const expectedIsAlive: boolean = expectedSurvivors.includes(id);
+      expect(isAlive).toEqual(expectedIsAlive);
+    });
+  });
+  test("should tick for an iteration, some alive", () => {
+    const grid = gridService.buildGrid();
+    grid.setAlive(0);
+    grid.setAlive(3);
+    grid.setAlive(5);
+    grid.setAlive(8);
+    grid.setAlive(11);
+
+    // test
+    const newGrid = gridService.tick(grid);
+
+    const ids: number[] = newGrid.getIds();
+    const expectedSurvivors = [4, 5, 6];
+    ids.forEach((id) => {
+      const isAlive: boolean = newGrid.getCell(id).isAlive();
+      const expectedIsAlive: boolean = expectedSurvivors.includes(id);
+      expect(isAlive).toEqual(expectedIsAlive);
     });
   });
 });

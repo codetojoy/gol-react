@@ -6,7 +6,7 @@ class Grid {
 
   clone(): Grid {
     const result = new Grid();
-    result.cells = this.cells.slice();
+    result.cells = this.cells.map((c) => new Cell(c.id, c.state));
     return result;
   }
 
