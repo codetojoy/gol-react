@@ -1,6 +1,7 @@
 import Cell from "./Cell";
 import CellState from "./CellState";
 import Grid from "./Grid";
+import GridService from "../services/GridService";
 
 describe("Grid", () => {
   test("canary test", () => {
@@ -8,6 +9,32 @@ describe("Grid", () => {
     const result: number = 2 + 2;
 
     expect(result).toEqual(4);
+  });
+  test("should set a cell to be alive", () => {
+    const numRows: number = 3;
+    const numCols: number = 4;
+    const gridService: GridService = new GridService(numRows, numCols);
+    const id = 7;
+    const grid = gridService.buildGrid();
+
+    // test
+    grid.setAlive(id);
+
+    const cell = grid.getCell(id);
+    expect(cell.state).toEqual(CellState.alive);
+  });
+  test("should interrogate if cell is alive", () => {
+    const numRows: number = 3;
+    const numCols: number = 4;
+    const gridService: GridService = new GridService(numRows, numCols);
+    const id = 7;
+    const grid = gridService.buildGrid();
+    grid.setAlive(id);
+
+    // test
+    const result = grid.isAlive(id);
+
+    expect(result).toBeTruthy();
   });
   test("should provide ordered list of ids", () => {
     let c1: Cell = new Cell(10, CellState.alive);

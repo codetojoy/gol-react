@@ -2,14 +2,15 @@ import Cell from "../models/Cell";
 import CellState from "../models/CellState";
 import Grid from "../models/Grid";
 import { Neighbour } from "../models/Neighbour";
-// import { Neighbour } from "../models/Neighbour";
 import IdService from "./IdService";
+import RuleService from "./RuleService";
 
 class GridService {
   numRows: number = -1;
   numCols: number = -1;
   numCells: number = -1;
   idService: IdService;
+
   constructor(numRows: number, numCols: number) {
     this.numRows = numRows;
     this.numCols = numCols;
@@ -23,8 +24,22 @@ class GridService {
       const cell = this.buildCell(i);
       grid.addCell(cell);
     }
-    // this.populateNeighbours(this.numCells, grid);
     return grid;
+  }
+
+  tick(grid: Grid): Grid {
+    const ruleService = new RuleService();
+    const newGrid = grid.clone();
+    const ids: number[] = grid.getIds();
+    ids.forEach((id) => {
+      // apply rules
+      const cell: Cell = grid.getCell(id);
+      const neighbours: Cell[] = Array.from(this.getNeighbours(id, grid).values());
+      const newState = ruleService.determineState(cell.state, neighbours);
+      const newCell: Cell = newGrid.getCell(id);
+      newCell.state = newState;
+    });
+    return newGrid;
   }
 
   getNeighbours(id: number, grid: Grid): Map<Neighbour, Cell> {

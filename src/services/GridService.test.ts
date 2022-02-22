@@ -1,3 +1,5 @@
+import Cell from "../models/Cell";
+import CellState from "../models/CellState";
 import { Neighbour } from "../models/Neighbour";
 import GridService from "./GridService";
 
@@ -65,5 +67,24 @@ describe("GridService", () => {
     expect(ids.includes(6)).toBeTruthy();
     expect(ids.includes(7)).toBeTruthy();
     expect(ids.includes(10)).toBeTruthy();
+  });
+
+  // --------------------------------
+  // TODO: data-driven?
+  test("should tick for an iteration, case 1", () => {
+    const grid = gridService.buildGrid();
+    grid.setAlive(0);
+    grid.setAlive(3);
+    grid.setAlive(8);
+    grid.setAlive(11);
+
+    // test
+    const newGrid = gridService.tick(grid);
+
+    const ids: number[] = newGrid.getIds();
+    ids.forEach((id) => {
+      const isAlive: boolean = newGrid.getCell(id).isAlive();
+      expect(isAlive).toBeFalsy();
+    });
   });
 });
