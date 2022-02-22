@@ -51,6 +51,7 @@ npm install redux
 npm install react-redux
 npm install react-router-dom@5
 npm install "@reduxjs/toolkit"
+npm install --save @types/react-router-dom
 ```
 
 ### useful references

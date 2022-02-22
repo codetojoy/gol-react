@@ -1,13 +1,32 @@
 import React from "react";
-import logo from "./logo.svg";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+import MainHeader from "./components/MainHeader/MainHeader";
+
+import Game from "./pages/Game";
+import Config from "./pages/Config/Config";
+import Error from "./pages/Error";
+
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Canary test</p>
-      </header>
+    <div>
+      <MainHeader />
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/game" />
+        </Route>
+        <Route path="/game">
+          <Game />
+        </Route>
+        <Route path="/config" exact>
+          <Config />
+        </Route>
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
     </div>
   );
 }
