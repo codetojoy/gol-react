@@ -23,23 +23,21 @@ class GridService {
       const cell = this.buildCell(i);
       grid.addCell(cell);
     }
-    this.populateNeighbours(this.numCells, grid);
+    // this.populateNeighbours(this.numCells, grid);
     return grid;
   }
 
-  populateNeighbours(numCells: number, grid: Grid): void {
+  getNeighbours(id: number, grid: Grid): Map<Neighbour, Cell> {
+    const neighbours: Map<Neighbour, Cell> = new Map<Neighbour, Cell>();
     const idService: IdService = new IdService(this.numRows, this.numCols);
-    const ids = grid.getIds();
-    ids.forEach((id) => {
-      const idMap: Map<Neighbour, number> = idService.getNeighbouringCells(id);
-      const neighbours: Map<Neighbour, Cell> = new Map<Neighbour, Cell>();
-      idMap.forEach((n, neighbourId) => {
-        const neighbourCell: Cell = grid.getCell(neighbourId);
-        neighbours.set(n, neighbourCell);
-      });
-      const cell: Cell = grid.getCell(id);
-      cell.setNeighbours(neighbours);
+    const idMap: Map<Neighbour, number> = idService.getNeighbouringCells(id);
+    Array.from(idMap.entries()).forEach((entry) => {
+      const neighbour = entry[0];
+      const neighbourId = entry[1];
+      const neighbourCell: Cell = grid.getCell(neighbourId);
+      neighbours.set(neighbour, neighbourCell);
     });
+    return neighbours;
   }
 
   buildCell(id: number): Cell {

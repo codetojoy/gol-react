@@ -13,22 +13,57 @@ describe("GridService", () => {
     expect(grid.getIds().length).toEqual(numCells);
   });
   // TODO: data-driven?
-  test("should build grid with correct neighbours for id 0", () => {
+  test("should get correct neighbours for id 0", () => {
     const id = 0;
-
-    // test
     const grid = gridService.buildGrid();
 
-    const cell = grid.getCell(id);
-    const neighbours = cell.neighbours;
-    console.log(`TRACER gs.test :`);
-    console.log(neighbours);
-    /*
+    // test
+    const neighbours = gridService.getNeighbours(id, grid);
+
     let keys = Array.from(neighbours.keys());
     expect(keys.length).toEqual(3);
-    expect(neighbours.get(Neighbour.right)!.id).toEqual(1);
-    expect(neighbours.get(Neighbour.lower)!.id).toEqual(4);
-    expect(neighbours.get(Neighbour.lower_left)!.id).toEqual(5);
-    */
+    expect(keys.includes(Neighbour.right)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower)).toBeTruthy();
+    expect(keys.includes(Neighbour.lower_right)).toBeTruthy();
+    let ids = Array.from(neighbours.values()).map((c) => c.id);
+    expect(ids.includes(1)).toBeTruthy();
+    expect(ids.includes(4)).toBeTruthy();
+    expect(ids.includes(5)).toBeTruthy();
+  });
+  test("should get correct neighbours for id 5", () => {
+    const id = 5;
+    const grid = gridService.buildGrid();
+
+    // test
+    const neighbours = gridService.getNeighbours(id, grid);
+
+    let keys = Array.from(neighbours.keys());
+    expect(keys.length).toEqual(8);
+    let ids = Array.from(neighbours.values()).map((c) => c.id);
+    expect(ids.includes(0)).toBeTruthy();
+    expect(ids.includes(1)).toBeTruthy();
+    expect(ids.includes(2)).toBeTruthy();
+    expect(ids.includes(4)).toBeTruthy();
+    expect(ids.includes(6)).toBeTruthy();
+    expect(ids.includes(8)).toBeTruthy();
+    expect(ids.includes(9)).toBeTruthy();
+    expect(ids.includes(10)).toBeTruthy();
+  });
+  test("should get correct neighbours for id 11", () => {
+    const id = 11;
+    const grid = gridService.buildGrid();
+
+    // test
+    const neighbours = gridService.getNeighbours(id, grid);
+
+    let keys = Array.from(neighbours.keys());
+    expect(keys.length).toEqual(3);
+    expect(keys.includes(Neighbour.upper_left)).toBeTruthy();
+    expect(keys.includes(Neighbour.upper)).toBeTruthy();
+    expect(keys.includes(Neighbour.left)).toBeTruthy();
+    let ids = Array.from(neighbours.values()).map((c) => c.id);
+    expect(ids.includes(6)).toBeTruthy();
+    expect(ids.includes(7)).toBeTruthy();
+    expect(ids.includes(10)).toBeTruthy();
   });
 });
