@@ -1,5 +1,3 @@
-import Cell from "../models/Cell";
-import Grid from "../models/Grid";
 import { Neighbour, allNeighbours } from "../models/Neighbour";
 import Coord from "../models/Coord";
 

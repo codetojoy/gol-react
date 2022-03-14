@@ -1,27 +1,15 @@
-/*
 import React from "react";
-
-import TodoModel from "../models/Todo";
-
-const Todo: React.FC<{ todo: TodoModel }> = (props) => {
-  return (
-          <li key={props.todo.id}>
-            {props.todo.text} (TRACER: {props.todo.id})
-          </li>
-  );
-};
-
-export default Todo;
-*/
-
-import React from "react";
-import { NavLink } from "react-router-dom";
 import classes from "./Grid.module.css";
+import { useAppSelector } from "../../hooks";
+import Cell from "../Cell/Cell";
 
 const Grid: React.FC<{}> = (props) => {
-  return (
-    <div>TODO: grid</div>
-  );
+  const grid = useAppSelector((state) => state.grid);
+  const cells = grid.grid.theCells;
+  const cellContent = cells.map((cell) => {
+    return <Cell key={cell.id} cell={cell}></Cell>;
+  });
+  return <div className={classes.grid}>{cellContent}</div>;
 };
 
 export default Grid;

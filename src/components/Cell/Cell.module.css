@@ -1,0 +1,13 @@
+.cellAlive {
+  background-color: green;
+  height: 5rem;
+  width: 5rem;
+  margin: 5px;
+}
+
+.cellDead {
+  background-color: silver;
+  height: 5rem;
+  width: 5rem;
+  margin: 5px;
+}

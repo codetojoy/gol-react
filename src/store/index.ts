@@ -1,18 +1,18 @@
 import { combineReducers, createStore } from "redux";
 import { configReducer } from "./config/reducer";
 import { IConfigState } from "./config/types";
-// import { gameReducer } from "./game/reducer";
-// import { IGameState } from "./game/types";
+import { gridReducer } from "./grid/reducer";
+import { IGridState } from "./grid/types";
 
 export interface IRootState {
-  // game: IGameState;
+  grid: IGridState;
   config: IConfigState;
 }
 
 export const store = createStore<IRootState, any, any, any>(
   combineReducers({
     config: configReducer,
-    // game: gameReducer,
+    grid: gridReducer,
   })
 );
 

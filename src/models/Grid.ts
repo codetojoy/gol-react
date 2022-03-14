@@ -4,6 +4,11 @@ import CellState from "./CellState";
 class Grid {
   cells: Cell[] = [];
 
+  // TODO: rename
+  get theCells() {
+    return this.cells.slice();
+  }
+
   clone(): Grid {
     const result = new Grid();
     result.cells = this.cells.map((c) => new Cell(c.id, c.state));

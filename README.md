@@ -19,7 +19,10 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
-* render grid in config
+* write a clear-grid function
+* write a function that allow manual seeding
+* simple: render fixed grid in config
+* better: render dynamic grid in config
 * simple: tick based on a button click
 * better: tick based on a timer
 * more tick tests
@@ -27,6 +30,8 @@ link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 * build empty world without any UI
 * seed world without any UI
 * play round without any UI
+* X: allow a random seed on initialization
+* X: course-correct: Grid components should use store for the grid
 * X: setup basic store
 * X: IdService should return a map of <Neighbour, Cell> and not number[]
 * X: why does a Cell contain neighbours?

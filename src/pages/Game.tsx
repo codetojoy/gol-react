@@ -1,31 +1,34 @@
-/*
 import React from "react";
-
-import TodoModel from "../models/Todo";
-
-const Todo: React.FC<{ todo: TodoModel }> = (props) => {
-  return (
-          <li key={props.todo.id}>
-            {props.todo.text} (TRACER: {props.todo.id})
-          </li>
-  );
-};
-
-export default Todo;
-*/
-
-import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch } from "../hooks";
+import { resetGrid, tick } from "../store/grid/actions";
+import Grid from "../components/Grid/Grid";
 
 import classes from "./Game.module.css";
 
 const Game: React.FC<{}> = (props) => {
-    return (
-      <div className={classes.game}>
-        <h2>Game here</h2>
+  const dispatch = useAppDispatch();
+  const seedHandler = () => {
+    // console.log(`TRACER Game seed`);
+    dispatch(resetGrid());
+  };
+  const tickHandler = () => {
+    dispatch(tick());
+    // console.log(`TRACER Game tick`);
+  };
+  return (
+    <div className={classes.game}>
+      <Grid />
+      <hr />
+      <div>
+        <button type="button" onClick={seedHandler}>
+          re-seed
+        </button>
+        <button type="button" onClick={tickHandler}>
+          tick
+        </button>
       </div>
-    );
+    </div>
+  );
 };
 
 export default Game;
