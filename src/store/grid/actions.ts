@@ -8,6 +8,10 @@ export function seedGrid(numRows: number, numCols: number) {
   });
 }
 
+export function clearGrid() {
+  return action(Constants.CLEAR_GRID, {});
+}
+
 export function resetGrid() {
   return action(Constants.RESET_GRID, {});
 }

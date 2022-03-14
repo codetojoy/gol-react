@@ -11,6 +11,7 @@ export interface IGridState {
 }
 
 export enum Constants {
+  CLEAR_GRID = "CLEAR_GRID",
   RESET_GRID = "RESET_GRID",
   SEED_GRID = "SEED_GRID",
   TICK = "TICK",

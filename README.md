@@ -19,7 +19,6 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
-* write a clear-grid function
 * write a function that allow manual seeding
 * simple: render fixed grid in config
 * better: render dynamic grid in config
@@ -28,8 +27,9 @@ link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 * more tick tests
 * set fields to private
 * build empty world without any UI
-* seed world without any UI
-* play round without any UI
+* X: seed world without any UI
+* X: play round without any UI
+* X: write a clear-grid function
 * X: allow a random seed on initialization
 * X: course-correct: Grid components should use store for the grid
 * X: setup basic store

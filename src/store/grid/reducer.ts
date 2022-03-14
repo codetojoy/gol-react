@@ -13,18 +13,22 @@ function coinFlip(): boolean {
   return getRandom(1, 2) === 1;
 }
 
-function buildGrid(numRows: number, numCols: number): Grid {
+function newGrid(numRows: number, numCols: number): Grid {
   const service = new GridService(seedNumRows, seedNumCols);
-  const initGrid = service.buildGrid();
+  const grid = service.buildGrid();
+  return grid;
+}
+
+function buildGrid(numRows: number, numCols: number): Grid {
+  const grid = newGrid(numRows, numCols);
   // temp: randomized seed
-  initGrid.theCells.forEach((cell) => {
+  grid.theCells.forEach((cell) => {
     if (coinFlip()) {
-      initGrid.setAlive(cell.id);
+      grid.setAlive(cell.id);
     }
   });
-  console.log(`TRACER reducer initGrid:`);
-  console.log(initGrid.theCells.filter((c) => c.isAlive).map((c) => c.id));
-  return service.tick(initGrid);
+  const service = new GridService(seedNumRows, seedNumCols);
+  return service.tick(grid);
 }
 
 function tick(gridState: IGridState): Grid {
@@ -44,9 +48,10 @@ export function gridReducer(state: IGridState = init, action: GridActions): IGri
       const numRows = action.payload.numRows;
       const numCols = action.payload.numCols;
       return { numRows, numCols, grid: buildGrid(numRows, numCols) };
+    case Constants.CLEAR_GRID:
+      return { ...state, grid: newGrid(state.numRows, state.numCols) };
     case Constants.RESET_GRID:
-      const grid = buildGrid(state.numRows, state.numCols);
-      return { ...state, grid: grid };
+      return { ...state, grid: buildGrid(state.numRows, state.numCols) };
     case Constants.TICK:
       return { ...state, grid: tick(state) };
     default:
