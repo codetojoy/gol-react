@@ -27,6 +27,12 @@ class GridService {
     return grid;
   }
 
+  toggleCell(grid: Grid, id: number): Grid {
+    const newGrid = grid.clone();
+    newGrid.toggleState(id);
+    return newGrid;
+  }
+
   tick(grid: Grid): Grid {
     const ruleService = new RuleService();
     const newGrid = grid.clone();

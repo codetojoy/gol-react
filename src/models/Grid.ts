@@ -23,6 +23,10 @@ class Grid {
     return this.cells[id];
   }
 
+  toggleState(id: number): void {
+    this.cells[id].state = this.isAlive(id) ? CellState.dead : CellState.alive;
+  }
+
   setAlive(id: number): void {
     this.cells[id].state = CellState.alive;
   }

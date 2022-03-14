@@ -15,4 +15,5 @@ export enum Constants {
   RESET_GRID = "RESET_GRID",
   SEED_GRID = "SEED_GRID",
   TICK = "TICK",
+  TOGGLE_CELL = "TOGGLE_CELL",
 }

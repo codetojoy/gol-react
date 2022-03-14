@@ -36,6 +36,11 @@ function tick(gridState: IGridState): Grid {
   return service.tick(gridState.grid);
 }
 
+function toggleCell(gridState: IGridState, cellId: number): Grid {
+  const service = new GridService(gridState.numRows, gridState.numCols);
+  return service.toggleCell(gridState.grid, cellId);
+}
+
 const init: IGridState = {
   numRows: seedNumRows,
   numCols: seedNumCols,
@@ -44,6 +49,9 @@ const init: IGridState = {
 
 export function gridReducer(state: IGridState = init, action: GridActions): IGridState {
   switch (action.type) {
+    case Constants.TOGGLE_CELL:
+      const cellId = action.payload.id;
+      return { ...state, grid: toggleCell(state, cellId) };
     case Constants.SEED_GRID:
       const numRows = action.payload.numRows;
       const numCols = action.payload.numCols;
