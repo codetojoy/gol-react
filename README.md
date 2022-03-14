@@ -16,11 +16,18 @@ see [here](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 Todo:
 ---------
 
+link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
+
+* goal: no `js` or `jsx` files
+* render grid in config
+* simple: tick based on a button click
+* better: tick based on a timer
 * more tick tests
 * set fields to private
 * build empty world without any UI
 * seed world without any UI
-* play round withotu any UI
+* play round without any UI
+* X: setup basic store
 * X: IdService should return a map of <Neighbour, Cell> and not number[]
 * X: why does a Cell contain neighbours?
 
@@ -52,8 +59,12 @@ npm install react-redux
 npm install react-router-dom@5
 npm install "@reduxjs/toolkit"
 npm install --save @types/react-router-dom
+npm install -D @types/react-redux
+npm install -D typesafe-actions
 ```
 
 ### useful references
 
-* TBD
+* https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
+*  https://redux.js.org/usage/usage-with-typescript
+
