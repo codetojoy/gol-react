@@ -1,8 +1,8 @@
 import { Constants, ConfigActions, IConfigState } from "./types";
 
 const init: IConfigState = {
-  numRows: 3,
-  numCols: 4,
+  numRows: 5,
+  numCols: 6,
 };
 
 export function configReducer(state: IConfigState = init, action: ConfigActions): IConfigState {
@@ -15,4 +15,3 @@ export function configReducer(state: IConfigState = init, action: ConfigActions)
       return state;
   }
 }
-

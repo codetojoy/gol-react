@@ -31,10 +31,18 @@ const Controls: React.FC<{}> = (props) => {
     <LoadingSpinner />
   ) : (
     <div className={classes.controls}>
-      <Button onClick={clearHandler}>clear</Button>
-      <Button onClick={seedHandler}>seed</Button>
-      <Button onClick={tickHandler}>one tick</Button>
-      <Button onClick={slowTickHandler}>slow tick</Button>
+      <div>
+        <Button onClick={clearHandler}>clear</Button>
+      </div>
+      <div>
+        <Button onClick={seedHandler}>seed</Button>
+      </div>
+      <div>
+        <Button onClick={tickHandler}>one tick</Button>
+      </div>
+      <div>
+        <Button onClick={slowTickHandler}>slow tick</Button>
+      </div>
     </div>
   );
   return content;
