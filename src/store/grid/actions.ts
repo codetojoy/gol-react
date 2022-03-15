@@ -23,3 +23,7 @@ export function resetGrid() {
 export function tick() {
   return action(Constants.TICK, {});
 }
+
+export function setLoading(loading: boolean) {
+  return action(Constants.SET_LOADING, { loading });
+}

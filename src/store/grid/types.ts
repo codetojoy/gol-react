@@ -8,6 +8,7 @@ export interface IGridState {
   numRows: number;
   numCols: number;
   grid: Grid;
+  loading: boolean;
 }
 
 export enum Constants {
@@ -16,4 +17,5 @@ export enum Constants {
   SEED_GRID = "SEED_GRID",
   TICK = "TICK",
   TOGGLE_CELL = "TOGGLE_CELL",
+  SET_LOADING = "SET_LOADING",
 }

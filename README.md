@@ -19,12 +19,14 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
-* simple: render fixed grid in config
-* better: render dynamic grid in config
-    - introduce Row
+* config should work properly 
 * better: tick based on a timer ?
 * more tick tests
 * set fields to private
+* X: slow-tick button
+* Y: spinner UI for slow-tick
+* X - simple: render fixed grid in config
+* X - better: render dynamic grid in config
 * X: simple: tick based on a button click
 * X: write a function that allow manual seeding
 * X: write a clear-grid function
