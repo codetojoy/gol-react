@@ -14,3 +14,15 @@ export async function slowTickAsync(dispatch: Dispatch<GridActions>) {
   dispatch(actions.tick());
   dispatch(actions.setLoading(false));
 }
+
+export async function startTicksAsync(dispatch: Dispatch<GridActions>) {
+  dispatch(actions.setLoading(true));
+
+  const numTicks: number = 20;
+  for (let i: number = 0; i <= numTicks; i++) {
+    await sleep(1000);
+    dispatch(actions.tick());
+  }
+
+  dispatch(actions.setLoading(false));
+}

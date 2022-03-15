@@ -19,10 +19,12 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
+* status bar with tick/iteration #
 * better buttons on controls 
 * better: tick based on a timer ?
 * more tick tests
 * set fields to private
+* X: simple: ticks based on a counter
 * X: config should work properly 
 * X: slow-tick button
 * Y: spinner UI for slow-tick
