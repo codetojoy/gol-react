@@ -22,28 +22,36 @@ const Controls: React.FC<{}> = (props) => {
   const slowTickHandler = async () => {
     slowTickAsync(dispatch);
   };
+
+  /*
   const loadingText = "working...";
   const clearText = loading ? loadingText : "clear";
   const reSeedText = loading ? loadingText : "re-seed";
   const tickText = loading ? loadingText : "tick";
   const slowTickText = loading ? loadingText : "slow tick";
+  */
 
-  return (
+  const content = loading ? (
+    <div className={classes.controls}>
+      <p>working...</p>
+    </div>
+  ) : (
     <div className={classes.controls}>
       <button type="button" onClick={clearHandler}>
-        {clearText}
+        clear
       </button>
       <button type="button" onClick={seedHandler}>
-        {reSeedText}
+        re-seed
       </button>
       <button type="button" onClick={tickHandler}>
-        {tickText}
+        one tick
       </button>
       <button type="button" onClick={slowTickHandler}>
-        {slowTickText}
+        slow tick
       </button>
     </div>
   );
+  return content;
 };
 
 export default Controls;
