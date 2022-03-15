@@ -21,6 +21,7 @@ link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 * goal: no `js` or `jsx` files
 * simple: render fixed grid in config
 * better: render dynamic grid in config
+    - introduce Row
 * better: tick based on a timer ?
 * more tick tests
 * set fields to private

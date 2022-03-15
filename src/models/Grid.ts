@@ -5,8 +5,15 @@ class Grid {
   cells: Cell[] = [];
 
   // TODO: rename
-  get theCells() {
+  get theCells(): Cell[] {
     return this.cells.slice();
+  }
+
+  // TODO: should this go into service, or store?
+  getRow(rowIndex: number, numCols: number): Cell[] {
+    const begin = rowIndex * numCols;
+    const end = begin + numCols;
+    return this.cells.slice(begin, end);
   }
 
   clone(): Grid {

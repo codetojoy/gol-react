@@ -11,7 +11,12 @@ const Cell: React.FC<{ cell: CellModel }> = (props) => {
   };
 
   const className = props.cell.isAlive() ? classes.cellAlive : classes.cellDead;
-  return <div onClick={clickHandler} className={className}></div>;
+  const isDebug: boolean = false;
+  return (
+    <div onClick={clickHandler} className={className}>
+      {isDebug ? props.cell.id : ""}
+    </div>
+  );
 };
 
 export default Cell;
