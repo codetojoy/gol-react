@@ -4,6 +4,7 @@ import { clearGrid, resetGrid, tick } from "../../store/grid/actions";
 import { slowTickAsync } from "../../store/grid/async-actions";
 import { IGridState } from "../../store/grid/types";
 import { IConfigState } from "../../store/config/types";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
 import classes from "./Controls.module.css";
 
@@ -25,10 +26,9 @@ const Controls: React.FC<{}> = (props) => {
     slowTickAsync(dispatch);
   };
 
+  console.log(`TRACER Controls cp 1`);
   const content = loading ? (
-    <div className={classes.controls}>
-      <p>working...</p>
-    </div>
+    <LoadingSpinner />
   ) : (
     <div className={classes.controls}>
       <button type="button" onClick={clearHandler}>
