@@ -19,6 +19,7 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
+* better buttons on controls 
 * better: tick based on a timer ?
 * more tick tests
 * set fields to private
