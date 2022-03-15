@@ -3,18 +3,20 @@ import { useAppSelector, useAppDispatch } from "../../hooks";
 import { clearGrid, resetGrid, tick } from "../../store/grid/actions";
 import { slowTickAsync } from "../../store/grid/async-actions";
 import { IGridState } from "../../store/grid/types";
+import { IConfigState } from "../../store/config/types";
 
 import classes from "./Controls.module.css";
 
 const Controls: React.FC<{}> = (props) => {
   const grid: IGridState = useAppSelector((state) => state.grid);
+  const config: IConfigState = useAppSelector((state) => state.config);
   const loading: boolean = grid.loading;
   const dispatch = useAppDispatch();
   const clearHandler = () => {
     dispatch(clearGrid());
   };
   const seedHandler = () => {
-    dispatch(resetGrid());
+    dispatch(resetGrid(config.numRows, config.numCols));
   };
   const tickHandler = () => {
     dispatch(tick());
@@ -22,14 +24,6 @@ const Controls: React.FC<{}> = (props) => {
   const slowTickHandler = async () => {
     slowTickAsync(dispatch);
   };
-
-  /*
-  const loadingText = "working...";
-  const clearText = loading ? loadingText : "clear";
-  const reSeedText = loading ? loadingText : "re-seed";
-  const tickText = loading ? loadingText : "tick";
-  const slowTickText = loading ? loadingText : "slow tick";
-  */
 
   const content = loading ? (
     <div className={classes.controls}>
@@ -41,7 +35,7 @@ const Controls: React.FC<{}> = (props) => {
         clear
       </button>
       <button type="button" onClick={seedHandler}>
-        re-seed
+        seed
       </button>
       <button type="button" onClick={tickHandler}>
         one tick

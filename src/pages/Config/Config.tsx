@@ -1,13 +1,16 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { setNumRows, setNumCols } from "../../store/config/actions";
+import { resetGrid } from "../../store/grid/actions";
 
 const Config: React.FC<{}> = (props) => {
   const config = useAppSelector((state) => state.config);
   const dispatch = useAppDispatch();
   const rowClickHandler = () => {
     console.log(`TRACER row click`);
-    dispatch(setNumRows(config.numRows + 1));
+    const numRows = config.numRows + 1;
+    dispatch(setNumRows(numRows));
+    dispatch(resetGrid(numRows, config.numCols));
   };
   const colClickHandler = () => {
     console.log(`TRACER col click`);

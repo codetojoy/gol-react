@@ -16,8 +16,8 @@ export function clearGrid() {
   return action(Constants.CLEAR_GRID, {});
 }
 
-export function resetGrid() {
-  return action(Constants.RESET_GRID, {});
+export function resetGrid(numRows: number, numCols: number) {
+  return action(Constants.RESET_GRID, { numRows, numCols });
 }
 
 export function tick() {

@@ -9,6 +9,7 @@ export interface IGridState {
   numCols: number;
   grid: Grid;
   loading: boolean;
+  initialized: boolean;
 }
 
 export enum Constants {

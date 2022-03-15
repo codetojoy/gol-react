@@ -19,10 +19,10 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
-* config should work properly 
 * better: tick based on a timer ?
 * more tick tests
 * set fields to private
+* X: config should work properly 
 * X: slow-tick button
 * Y: spinner UI for slow-tick
 * X - simple: render fixed grid in config
