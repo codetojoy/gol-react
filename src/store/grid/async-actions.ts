@@ -9,7 +9,7 @@ function sleep(timeoutInMillis: number) {
 export async function slowTickAsync(dispatch: Dispatch<GridActions>) {
   dispatch(actions.setLoading(true));
 
-  await sleep(3000);
+  await sleep(1000);
 
   dispatch(actions.tick());
   dispatch(actions.setLoading(false));
@@ -20,7 +20,7 @@ export async function startTicksAsync(dispatch: Dispatch<GridActions>) {
 
   const numTicks: number = 20;
   for (let i: number = 0; i <= numTicks; i++) {
-    await sleep(1000);
+    await sleep(500);
     dispatch(actions.tick());
   }
 

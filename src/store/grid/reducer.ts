@@ -49,6 +49,7 @@ const init: IGridState = {
   grid: buildGrid(0, 0),
   loading: false,
   initialized: false,
+  tickCount: 0,
 };
 
 export function gridReducer(state: IGridState = init, action: GridActions): IGridState {
@@ -61,15 +62,15 @@ export function gridReducer(state: IGridState = init, action: GridActions): IGri
     case Constants.SEED_GRID:
       numRows = action.payload.numRows;
       numCols = action.payload.numCols;
-      return { numRows, numCols, grid: buildGrid(numRows, numCols), loading: false, initialized: true };
+      return { numRows, numCols, grid: buildGrid(numRows, numCols), loading: false, initialized: true, tickCount: 0 };
     case Constants.CLEAR_GRID:
-      return { ...state, grid: newGrid(state.numRows, state.numCols) };
+      return { ...state, grid: newGrid(state.numRows, state.numCols), tickCount: 0 };
     case Constants.RESET_GRID:
       numRows = action.payload.numRows;
       numCols = action.payload.numCols;
-      return { numRows, numCols, grid: buildGrid(numRows, numCols), loading: false, initialized: true };
+      return { numRows, numCols, grid: buildGrid(numRows, numCols), loading: false, initialized: true, tickCount: 0 };
     case Constants.TICK:
-      return { ...state, grid: tick(state) };
+      return { ...state, grid: tick(state), tickCount: state.tickCount + 1 };
     case Constants.SET_LOADING:
       return { ...state, loading: action.payload.loading };
     default:

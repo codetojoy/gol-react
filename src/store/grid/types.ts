@@ -10,6 +10,7 @@ export interface IGridState {
   grid: Grid;
   loading: boolean;
   initialized: boolean;
+  tickCount: number;
 }
 
 export enum Constants {
