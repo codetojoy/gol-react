@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks";
 import { clearGrid, resetGrid, tick } from "../../store/grid/actions";
-import { slowTickAsync, startTicksAsync } from "../../store/grid/async-actions";
+import { slowTickAsync, startTicksAsync, stopTicksAsync } from "../../store/grid/async-actions";
 import { IGridState } from "../../store/grid/types";
 import { IConfigState } from "../../store/config/types";
 import LoadingSpinner from "../UI/LoadingSpinner";
@@ -29,9 +29,19 @@ const Controls: React.FC<{}> = (props) => {
   const startTicksHandler = async () => {
     startTicksAsync(dispatch);
   };
+  const stopTicksHandler = async () => {
+    stopTicksAsync(dispatch);
+  };
 
   const content = loading ? (
-    <LoadingSpinner />
+    <div className={classes.controls}>
+      <div>
+        <LoadingSpinner />
+      </div>
+      <div>
+        <Button onClick={stopTicksHandler}>stop ticks</Button>
+      </div>
+    </div>
   ) : (
     <div className={classes.controls}>
       <div>

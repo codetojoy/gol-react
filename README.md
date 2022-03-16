@@ -19,11 +19,16 @@ Todo:
 link - https://medium.com/@pongsatt/how-to-use-redux-in-typescript-ad0b5fe77933
 
 * goal: no `js` or `jsx` files
-* status bar with tick/iteration #
-* better buttons on controls 
-* better: tick based on a timer ?
+* for timer tick, stop when empty world
+* media query
+* publish to gh-pages
 * more tick tests
 * set fields to private
+* ----
+* X: for timer tick, stop on signal
+* X: status bar with tick/iteration #
+* X: better buttons on controls 
+* X: better: tick based on a timer ?
 * X: simple: ticks based on a counter
 * X: config should work properly 
 * X: slow-tick button
